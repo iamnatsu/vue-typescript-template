@@ -1,4 +1,6 @@
-# vue-type-sample
+# vue-typescript-template
+
+vue & vuex & typescript template
 
 ## Project setup
 ```
