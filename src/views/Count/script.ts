@@ -1,10 +1,10 @@
 import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
-import { AppState } from '../../store/index'
+import { RootState } from '@/store/types';
 
 export default {
   computed: { 
     ...mapState({
-      count: (state: AppState) => state.counter.count
+      count: (state: RootState) => state.counter.count
     }),
     ...mapGetters('counter', {
       c: 'getCount'

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex, { Module, ActionTree, MutationTree, GetterTree } from 'vuex';
-import { RootState } from '../types';
 import * as SampleService from '@/services/sample-service';
+import { RootState } from '../types';
 
 Vue.use(Vuex);
 
@@ -15,12 +15,12 @@ const state: State = {
   count: 5,
 };
 
-const getters: GetterTree<State, any> = {
+const getters: GetterTree<State, RootState> = {
   getCount: ( s ) => { return s.count }
 }
 
-const actions: ActionTree<State, any> = {
-  increment: ({ commit }) => {
+const actions: ActionTree<State, RootState> = {
+  increment: ({ commit, state, rootState }) => {
     SampleService.get('').then(() => {
       commit('increment')
     });
