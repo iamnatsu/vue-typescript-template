@@ -1,21 +1,19 @@
-import Vue from 'vue'
-import Vuex, {StoreOptions} from 'vuex'
-import { RootState } from './types'
-import { counter, CounterState } from './modules/counter'
+import Vue from 'vue';
+import Vuex, {StoreOptions} from 'vuex';
+import { counter, CounterState } from './modules/counter';
+import { IRootState } from './types';
 
 Vue.use(Vuex);
 
-export interface AppState {
-  counter: CounterState
-}
-
-const store: StoreOptions<RootState> = {
-  state: {
-      version: '1.0.0'
-  },
+const store: StoreOptions<any> = {
   modules: {
-      counter
-  }
+    counter,
+  },
+  state: {
+    version: 'v0.1.0',
+    counter: counter.state as CounterState,
+  },
 };
 
-export default new Vuex.Store(store);
+// 'vuex-module-decorators' Modules (dynamic: true) dynamicaly redist later
+export default new Vuex.Store<IRootState>(store);

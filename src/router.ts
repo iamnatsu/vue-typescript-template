@@ -26,5 +26,10 @@ export default new Router({
       name: 'count',
       component: () => import('./views/Count/Count.vue'),
     },
+    {
+      path: '/todo',
+      name: 'todo',
+      component: () => import('./views/Todo/Todo.vue'),
+    },
   ],
 });

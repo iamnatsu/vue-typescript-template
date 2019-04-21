@@ -2,6 +2,10 @@
 
 vue & vuex & typescript template
 
+ - vue-property-decorator
+
+ - vuex-module-decorators
+
 ## Project setup
 ```
 npm install
