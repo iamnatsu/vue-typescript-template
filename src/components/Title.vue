@@ -14,7 +14,7 @@
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
-import CurrentUser from './CurrentUser.vue'
+import CurrentUser from './CurrentUser.vue';
 
 @Component({
   components: {
@@ -22,6 +22,5 @@ import CurrentUser from './CurrentUser.vue'
   },
 })
 export default class Title extends Vue {
-
 }
 </script>

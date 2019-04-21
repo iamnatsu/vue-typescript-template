@@ -1,21 +1,19 @@
-import Vue from 'vue'
-import Vuex, {StoreOptions} from 'vuex'
-import { counter, CounterState } from './modules/counter'
-import { todo, ToDoState } from './modules/todo'
-import { RootState } from './types';
+import Vue from 'vue';
+import Vuex, {StoreOptions} from 'vuex';
+import { counter, CounterState } from './modules/counter';
+import { IRootState } from './types';
 
 Vue.use(Vuex);
 
-const store: StoreOptions<RootState> = {
+const store: StoreOptions<any> = {
   modules: {
     counter,
-    todo,
   },
   state: {
-    version: "",
+    version: 'v0.1.0',
     counter: counter.state as CounterState,
-    todo: todo.state as ToDoState,
-  } 
+  },
 };
 
-export default new Vuex.Store(store);
+// 'vuex-module-decorators' Modules (dynamic: true) dynamicaly redist later
+export default new Vuex.Store<IRootState>(store);

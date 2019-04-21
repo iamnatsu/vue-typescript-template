@@ -1,8 +1,8 @@
 import { CounterState } from './modules/counter';
-import { ToDoState } from './modules/todo';
+import { TodoState } from './modules/todo';
 
-export interface RootState {
+export interface IRootState {
   version: string;
-  counter: CounterState,
-  todo: ToDoState
+  counter: CounterState;
+  todo: TodoState;
 }

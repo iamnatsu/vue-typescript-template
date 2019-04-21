@@ -9,18 +9,17 @@
 </template>
 
 <script lang='ts'>
-//<script src='./script.ts' />
-import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
-import { RootState } from '../../store/types';
+import { mapState, mapActions, mapMutations, mapGetters } from 'vuex';
+import { IRootState } from '../../store/types';
 
 export default {
-  computed: { 
+  computed: {
     ...mapState({
-      count: (state: RootState) => state.counter.count
+      count: (state: IRootState) => state.counter.count,
     }),
     ...mapGetters('counter', {
       c: 'getCount',
-    })
+    }),
   },
   methods: {
     ...mapMutations('counter', {
@@ -42,8 +41,6 @@ export default {
   その他記法２
   methods: {
     increment() {
-      console.dir(this.$store)
-      console.log("hoge")
       this.$store.dispatch("counter/increment");
     },
     decrement() {

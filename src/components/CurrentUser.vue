@@ -1,7 +1,7 @@
 <template>
-  <div class="current-user">
+  <div class='current-user'>
     <span>
-      <slot v-bind:user="user">{{ user.lastName }}</slot>
+      <slot v-bind:user='user'>{{ user.lastName }}</slot>
     </span>
   </div>
 </template>
@@ -13,10 +13,11 @@ import { User } from '../model/user';
 @Component
 export default class CurrentUser extends Vue {
   // data
-  user: User = {
-    id: "nwada",
-    firstName: "natsuho",
-    lastName: "wada"
-  }
+  private user: User = {
+    id: 'nwada',
+    firstName: 'natsuho',
+    lastName: 'wada',
+  };
+
 }
 </script>
