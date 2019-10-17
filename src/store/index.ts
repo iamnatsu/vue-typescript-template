@@ -1,21 +1,12 @@
 import Vue from 'vue'
-import Vuex, {StoreOptions} from 'vuex'
-import { RootState } from './types'
-import { counter, CounterState } from './modules/counter'
+import Vuex from 'vuex'
 
 Vue.use(Vuex);
 
-export interface AppState {
+export interface IRootState {
   counter: CounterState
 }
 
-const store: StoreOptions<RootState> = {
-  state: {
-      version: '1.0.0'
-  },
-  modules: {
-      counter
-  }
-};
+export default new Vuex.Store<IRootState>({});
 
-export default new Vuex.Store(store);
+import { CounterState } from './modules/counter'
