@@ -1,7 +1,8 @@
 import Vue from 'vue';
-import Vuex, { Module, ActionTree, MutationTree, GetterTree } from 'vuex';
+import Vuex from 'vuex';
 import * as SampleService from '@/services/sample-service';
-import { IRootState } from '../types';
+import { Mutation, Module , VuexModule, Action, getModule } from 'vuex-module-decorators';
+import store from '..';
 
 Vue.use(Vuex);
 
@@ -9,37 +10,28 @@ export interface CounterState {
   count: number;
 }
 
-type State = CounterState;
+@Module({ dynamic: true, store, name: 'counter' })
+class Counter extends VuexModule {
+  private _count: number = 5;
 
-const state: State = {
-  count: 5,
-};
+  @Mutation
+  public incriment() {
+    this._count++;
+  }
 
-const getters: GetterTree<State, IRootState> = {
-  getCount: ( counterState ) => counterState.count,
-};
+  @Mutation
+  public decrement() {
+    this._count--;
+  }
 
-const actions: ActionTree<State, IRootState> = {
-  increment: ({ commit /*, counterState, rootState */ }) => {
-    SampleService.get('').then(() => {
-      commit('increment');
-    });
-  },
-};
+  @Action({ commit: 'incriment' })
+  public async increment() {
+    await SampleService.get('');
+  }
 
-const mutations: MutationTree<State> = {
-  increment(counterState: State) {
-    counterState.count++;
-  },
-  decrement(counterState: State) {
-    counterState.count--;
-  },
-};
+  get count(): number {
+    return this._count;
+  }
+}
 
-export const counter: Module<State, IRootState> = {
-  namespaced: true,
-  state,
-  getters,
-  actions,
-  mutations,
-};
+export const CounterModule = getModule(Counter);
