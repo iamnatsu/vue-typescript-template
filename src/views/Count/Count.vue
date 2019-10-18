@@ -1,7 +1,7 @@
 <template>
   <div class="count">
     <h1>This is a count page</h1>
-        {{count}}
+        {{count()}}
     <button @click="increment">+</button>
     <button @click="minus">-</button>
   {{ c }}
@@ -9,6 +9,26 @@
 </template>
 
 <script lang='ts'>
+import { Component, Vue } from 'vue-property-decorator';
+import { CounterModule } from '../../store/modules/counter';
+
+@Component
+export default class Counter extends Vue {
+  public increment() {
+    CounterModule.increment();
+  }
+  public minus() {
+    CounterModule.decrement();
+  }
+  get c() {
+    return CounterModule.count;
+  }
+  public count() {
+    return CounterModule.count;
+  }
+}
+
+/*
 import { mapState, mapActions, mapMutations, mapGetters } from 'vuex';
 import { IRootState } from '../../store/types';
 
@@ -46,6 +66,6 @@ export default {
     decrement() {
       this.$store.commit("decrement");
     }
-  }*/
-};
+  }
+};*/
 </script>
